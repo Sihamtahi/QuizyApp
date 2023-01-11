@@ -1,13 +1,22 @@
 <template>
   
   <div class="ctr">
+    <!-- On passe la liste des questions, le nombre de question répondu et on crée un listner sur les questions !-->
+    <!-- On fait l'itération sur les questions à afficher pour chaqsue question on affiche les réponses possibes-->
     <questions v-if="questionsAnswered < questions.length" 
     :questions="questions" 
     :questionsAnswered="questionsAnswered"
     @quesion-answered= "questionAnswered"
     />
-    <result v-else/> 
-    <button type="button" class="reset-btn">Reset</button>
+    <result v-else
+    :results ="results" 
+    :totalCorrect="totalCorrect"
+    /> 
+    <button type="button" 
+    class="reset-btn"
+    @click.prevent="reset"
+    v-if="this.questionsAnswered === questions.length"
+    >Reset</button>
   </div>
   </template>
 <script >
@@ -108,6 +117,10 @@ methods :{
       
     }
     this.questionsAnswered++; 
+  }, 
+  reset(){
+    this.questionsAnswered = 0; 
+    this.totalCorrect = 0; 
   }
 }
 }

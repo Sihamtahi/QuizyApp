@@ -10,7 +10,6 @@
         :key="question.q"
         v-show="questionsAnswered === qi"
         >
-
             <div class="question">{{ question.q}}</div>
             <div class="answers" >
                 <div class="answer" 
@@ -35,8 +34,6 @@ export default {
         {
             this.$emit("quesion-answered", is_correct)
         }
-
     }
-
 }
 </script>
